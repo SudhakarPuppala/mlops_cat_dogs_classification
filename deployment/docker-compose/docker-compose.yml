@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  classifier:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cats-dogs-classifier:latest
+    container_name: cats-dogs-classifier
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./models:/app/models:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - mlops-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  # Optional: MLflow tracking server
+  mlflow:
+    image: python:3.10-slim
+    container_name: mlflow-server
+    ports:
+      - "5000:5000"
+    command: >
+      sh -c "pip install mlflow &&
+             mlflow server 
+             --host 0.0.0.0 
+             --port 5000 
+             --backend-store-uri sqlite:///mlflow.db 
+             --default-artifact-root /mlflow/artifacts"
+    volumes:
+      - mlflow-data:/mlflow
+    restart: unless-stopped
+    networks:
+      - mlops-network
+
+  # Optional: Prometheus for monitoring
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    restart: unless-stopped
+    networks:
+      - mlops-network
+
+networks:
+  mlops-network:
+    driver: bridge
+
+volumes:
+  mlflow-data:
+  prometheus-data:
