@@ -1,0 +1,33 @@
+# Core ML Libraries
+torch
+torchvision
+numpy
+Pillow
+scikit-learn
+
+# Web Framework
+fastapi
+uvicorn
+python-multipart
+pydantic
+
+# Experiment Tracking
+mlflow
+
+# Data Versioning
+dvc
+
+# Testing
+pytest
+pytest-cov
+httpx
+
+# Monitoring
+prometheus-client
+
+# Utilities
+python-dotenv
+tqdm
+matplotlib
+seaborn
+pandas
