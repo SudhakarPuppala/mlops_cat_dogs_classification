@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/tanwin/Desktop/BITS-Mtech/Semester-3/MLO/Assignment-2/notebooks/../mlruns/214365529706689014/b8d0633126f34b8fb9b502d23a667b3c/artifacts
+end_time: 1771194663365
+entry_point_name: ''
+experiment_id: '214365529706689014'
+lifecycle_stage: active
+run_id: b8d0633126f34b8fb9b502d23a667b3c
+run_name: classy-moth-925
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1771193336548
+status: 3
+tags: []
+user_id: tanwin

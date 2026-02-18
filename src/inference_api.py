@@ -70,11 +70,20 @@ def load_model(model_path: str = 'models/model.pt'):
     
     logger.info("Model loaded successfully")
 
+from contextlib import asynccontextmanager
 
-@app.on_event("startup")
-async def startup_event():
-    """Load model on startup"""
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     load_model()
+    yield
+
+app = FastAPI(
+    title="Cats vs Dogs Classifier API",
+    description="API for classifying images as cats or dogs",
+    version="1.0.0",
+    lifespan=lifespan
+)
 
 
 @app.get("/")
@@ -136,29 +145,23 @@ async def predict(file: UploadFile = File(...)):
                 status_code=400,
                 detail="File must be an image"
             )
-        
         # Read and process image
         contents = await file.read()
         image = Image.open(io.BytesIO(contents)).convert('RGB')
-        
         # Transform image
         image_tensor = TRANSFORM(image).unsqueeze(0).to(DEVICE)
-        
         # Make prediction
         with torch.no_grad():
             outputs = MODEL(image_tensor)
             probabilities = torch.softmax(outputs, dim=1)[0]
             predicted_class = torch.argmax(probabilities).item()
-        
         # Get class name and confidence
         class_name = CLASS_NAMES[predicted_class]
         confidence = probabilities[predicted_class].item()
-        
         # Update metrics
         PREDICTION_COUNT.labels(class_name=class_name).inc()
         latency = time.time() - start_time
         REQUEST_LATENCY.observe(latency)
-        
         # Prepare response
         response = {
             "prediction": class_name,
@@ -169,11 +172,10 @@ async def predict(file: UploadFile = File(...)):
             },
             "latency_seconds": latency
         }
-        
         logger.info(f"Prediction: {class_name} (confidence: {confidence:.4f})")
-        
         return response
-    
+    except HTTPException as e:
+        raise e
     except Exception as e:
         logger.error(f"Prediction error: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))

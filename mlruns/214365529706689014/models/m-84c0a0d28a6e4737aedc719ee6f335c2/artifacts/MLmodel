@@ -1,0 +1,23 @@
+artifact_path: file:///Users/tanwin/Desktop/BITS-Mtech/Semester-3/MLO/Assignment-2/notebooks/../mlruns/214365529706689014/models/m-84c0a0d28a6e4737aedc719ee6f335c2/artifacts
+flavors:
+  python_function:
+    config:
+      device: null
+    data: data
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pytorch
+    pickle_module_name: mlflow.pytorch.pickle_module
+    python_version: 3.13.5
+  pytorch:
+    code: null
+    model_data: data
+    pytorch_version: 2.9.1
+mlflow_version: 3.9.0
+model_id: m-84c0a0d28a6e4737aedc719ee6f335c2
+model_size_bytes: 104600393
+model_uuid: m-84c0a0d28a6e4737aedc719ee6f335c2
+prompts: null
+run_id: b8d0633126f34b8fb9b502d23a667b3c
+utc_time_created: '2026-02-15 22:30:57.592677'

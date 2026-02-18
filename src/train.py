@@ -229,6 +229,8 @@ class Trainer:
             mlflow.log_param("model_architecture", "SimpleCNN")
             
             for epoch in range(self.num_epochs):
+                print(f"\nEpoch {epoch+1}/{self.num_epochs}")
+                print("="*60)
                 logger.info(f"\nEpoch {epoch+1}/{self.num_epochs}")
                 
                 # Train
