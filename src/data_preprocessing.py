@@ -26,7 +26,7 @@ class CatsDogsDataset(Dataset):
         self.image_paths = image_paths
         self.labels = labels
         self.transform = transform
-    
+
     def __len__(self):
         return len(self.image_paths)
     
@@ -76,7 +76,8 @@ def prepare_data_loaders(
     val_paths: list,
     val_labels: list,
     batch_size: int = 32,
-    num_workers: int = 2
+    num_workers: int = 2,
+    pin_memory: bool = True
 ) -> Tuple[DataLoader, DataLoader]:
     """
     Prepare training and validation data loaders
@@ -109,7 +110,7 @@ def prepare_data_loaders(
         batch_size=batch_size,
         shuffle=True,
         num_workers=num_workers,
-        pin_memory=True
+        pin_memory=pin_memory
     )
     
     val_loader = DataLoader(
@@ -117,7 +118,7 @@ def prepare_data_loaders(
         batch_size=batch_size,
         shuffle=False,
         num_workers=num_workers,
-        pin_memory=True
+        pin_memory=pin_memory
     )
     
     logger.info(f"Training samples: {len(train_dataset)}")
