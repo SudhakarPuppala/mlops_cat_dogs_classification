@@ -1,8 +1,6 @@
 stages:
   create_model:
     cmd: python scripts/create_model.py
-    outs:
-      - models/model.pt
   train:
     cmd: python scripts/train_model.py
     deps:
@@ -12,3 +10,13 @@ stages:
     outs:
       - models/model.pt
     params: []
+  evaluate:
+    cmd: python scripts/evaluate_model.py
+    deps:
+      - models/model.pt
+      - src/
+      - scripts/evaluate_model.py
+    outs:
+      - metrics/metrics.json
+    params: []
+    
