@@ -20,14 +20,14 @@ This project implements a complete end-to-end MLOps pipeline for a binary image 
 
 ## Features
 
-### M1: Model Development & Experiment Tracking 
+### M1: Model Development & Experiment Tracking ✅
 - **Data Versioning**: DVC integration for dataset tracking
 - **Code Versioning**: Git-based source control
 - **Model Architecture**: Custom CNN with batch normalization and dropout
 - **Experiment Tracking**: MLflow for logging parameters, metrics, and artifacts
 - **Metrics Logged**: Loss curves, accuracy, precision, recall, F1-score, confusion matrix
 
-### M2: Model Packaging & Containerization 
+### M2: Model Packaging & Containerization ✅
 - **REST API**: FastAPI-based inference service
 - **Endpoints**: 
   - `/` - Root endpoint with API information
@@ -38,19 +38,19 @@ This project implements a complete end-to-end MLOps pipeline for a binary image 
 - **Environment Specification**: Pinned dependencies in requirements.txt
 - **Containerization**: Production-ready Dockerfile with multi-stage optimization
 
-### M3: CI Pipeline 
+### M3: CI Pipeline ✅
 - **Automated Testing**: Comprehensive unit tests with pytest
 - **GitHub Actions**: CI workflow for testing, building, and publishing
 - **Docker Image Publishing**: Automatic push to Docker Hub/Container Registry
 - **Code Quality**: Test coverage reporting
 
-### M4: CD Pipeline & Deployment 
+### M4: CD Pipeline & Deployment ✅
 - **Kubernetes Deployment**: Complete manifests with HPA, Service, Deployment
 - **Docker Compose**: Alternative deployment for local/VM environments
 - **GitOps**: Automated deployment on main branch changes
 - **Smoke Tests**: Post-deployment health and functionality checks
 
-### M5: Monitoring & Logging 
+### M5: Monitoring & Logging ✅
 - **Request Logging**: Structured logging for all API requests
 - **Prometheus Metrics**: Request count, latency, predictions by class
 - **Health Checks**: Liveness and readiness probes
@@ -345,6 +345,25 @@ Features:
 - Liveness and readiness probes
 - LoadBalancer service
 
+#### Docker Compose Deployment
+
+```bash
+# Start services
+cd deployment/docker-compose
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop services
+docker-compose down
+```
+
+Includes:
+- Classifier API (port 8000)
+- MLflow server (port 5000)
+- Prometheus (port 9090)
+
 #### Smoke Tests
 
 ```bash
@@ -430,13 +449,14 @@ kaggle datasets download -d salader/dogs-vs-cats
 
 # Or use any cats/dogs dataset
 # Structure should be:
-# PetImages/
-#     Cats/
-#       1.jpg
-#       2.jpg
-#     Dogs/
-#       1.jpg
-#       2.jpg
+# data/
+#   raw/
+#     cats/
+#       cat1.jpg
+#       cat2.jpg
+#     dogs/
+#       dog1.jpg
+#       dog2.jpg
 ```
 
 ### Preprocess Data

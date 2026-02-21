@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/tanwin/Desktop/BITS-Mtech/Semester-3/MLO/Assignment-2/notebooks/../mlruns/214365529706689014/6c99a10d3be14c4886f300388b156b99/artifacts
+end_time: 1771681291472
+entry_point_name: ''
+experiment_id: '214365529706689014'
+lifecycle_stage: active
+run_id: 6c99a10d3be14c4886f300388b156b99
+run_name: incongruous-hog-910
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1771680929230
+status: 4
+tags: []
+user_id: tanwin

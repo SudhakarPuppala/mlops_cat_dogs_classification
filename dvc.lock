@@ -1,0 +1,26 @@
+schema: '2.0'
+stages:
+  create_model:
+    cmd: python scripts/create_model.py
+  train:
+    cmd: python scripts/train_model.py
+    deps:
+    - path: PetImages/
+      hash: md5
+      md5: 80ec077856a937c1331d97b729798034.dir
+      size: 848876654
+      nfiles: 24999
+    - path: scripts/train_model.py
+      hash: md5
+      md5: 89e0b9455864912ed76e1aabfcb90f6a
+      size: 8784
+    - path: src/
+      hash: md5
+      md5: 8eacd88686849ea412df438f35e43d99.dir
+      size: 62061
+      nfiles: 10
+    outs:
+    - path: models/model.pt
+      hash: md5
+      md5: cf3de597f1e809478627845b7b6aa909
+      size: 104596269
