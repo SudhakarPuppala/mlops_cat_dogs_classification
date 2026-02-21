@@ -19,4 +19,17 @@ stages:
     outs:
       - metrics/metrics.json
     params: []
-    
+
+plots:
+  - metrics/metrics.json:
+      template: simple
+      x: epoch
+      y:
+        - train_loss
+        - val_loss
+        - train_accuracy
+        - val_accuracy
+        - val_precision
+        - val_recall
+        - val_f1_score
+      title: "Training Metrics"
