@@ -1,0 +1,14 @@
+stages:
+  create_model:
+    cmd: python scripts/create_model.py
+    outs:
+      - models/model.pt
+  train:
+    cmd: python scripts/train_model.py
+    deps:
+      - PetImages/
+      - src/
+      - scripts/train_model.py
+    outs:
+      - models/model.pt
+    params: []
