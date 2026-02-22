@@ -46,7 +46,6 @@ This project implements a complete end-to-end MLOps pipeline for a binary image 
 
 ### M4: CD Pipeline & Deployment ✅
 - **Kubernetes Deployment**: Complete manifests with HPA, Service, Deployment
-- **Docker Compose**: Alternative deployment for local/VM environments
 - **GitOps**: Automated deployment on main branch changes
 - **Smoke Tests**: Post-deployment health and functionality checks
 
@@ -79,8 +78,6 @@ mlops-cats-dogs-project/
 ├── deployment/                   # Deployment configurations
 │   ├── kubernetes/              # K8s manifests
 │   │   └── deployment.yaml
-│   └── docker-compose/          # Docker Compose setup
-│       └── docker-compose.yml
 ├── scripts/                      # Utility scripts
 │   ├── train_model.py           # Training script
 │   ├── smoke_test.sh            # Post-deployment tests
@@ -91,6 +88,11 @@ mlops-cats-dogs-project/
 ├── .github/workflows/           # CI/CD workflows
 │   └── ci-cd.yml               # GitHub Actions pipeline
 ├── notebooks/                    # Jupyter notebooks
+│   ├── M1_model_development_experiment.ipynb         # Model Development and Experiment Tracking Notebook
+│   ├── M2_packaging_contenerization.ipynb            # Model Packaging and Contteneratizaion Notebook
+│   ├── M3_CI_pipeline_test.ipynb                     # Contineous Integration pipeline Notebook
+│   └── M4_CD_pipeline_deployment.ipynb               # Contineous Deployment pipeline Notebook
+│   └── M5_logs_monitoring.ipynb                      # Log monitoring and production testing Notebook
 ├── Dockerfile                    # Container image definition
 ├── docker-compose.yml           # Alternative: compose in root
 ├── requirements.txt             # Python dependencies
