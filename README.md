@@ -73,9 +73,9 @@ mlops-cats-dogs-project/
 │   └── test_api.py              # API endpoint tests
 ├── models/                       # Saved models
 │   └── model.pt                 # Trained model weights
-├── data/                         # Dataset directory
-│   ├── raw/                     # Original data
-│   └── processed/               # Preprocessed data
+├── PetImages/                   # Dataset directory
+│   ├── Cat/                     # Cat Images
+│   └── Dog/                      # Dog Images
 ├── deployment/                   # Deployment configurations
 │   ├── kubernetes/              # K8s manifests
 │   │   └── deployment.yaml

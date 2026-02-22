@@ -13,6 +13,20 @@ from collections import defaultdict
 from PIL import Image
 from sklearn.model_selection import train_test_split
 
+import random
+import sys
+from dvclive import Live
+
+with Live(save_dvc_exp=True) as live:
+    epochs = int(sys.argv[1])
+    live.log_param("epochs", epochs)
+    for epoch in range(epochs):
+        live.log_metric("train/accuracy", epoch + random.random())
+        live.log_metric("train/loss", epochs - epoch - random.random())
+        live.log_metric("val/accuracy",epoch + random.random() )
+        live.log_metric("val/loss", epochs - epoch - random.random())
+        live.next_step()
+        
 # Add parent directory to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -146,7 +160,7 @@ def parse_args():
                        help='Path to save the trained model')
     parser.add_argument('--batch-size', type=int, default=32,
                        help='Batch size for training')
-    parser.add_argument('--epochs', type=int, default=10,
+    parser.add_argument('--epochs', type=int, default=2,
                        help='Number of training epochs')
     parser.add_argument('--lr', type=float, default=0.001,
                        help='Learning rate')
