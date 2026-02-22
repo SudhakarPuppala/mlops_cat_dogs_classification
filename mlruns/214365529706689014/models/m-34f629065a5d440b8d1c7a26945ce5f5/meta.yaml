@@ -1,0 +1,10 @@
+artifact_location: file:///Users/tanwin/Desktop/BITS-Mtech/Semester-3/MLO/Assignment-2/notebooks/../mlruns/214365529706689014/models/m-34f629065a5d440b8d1c7a26945ce5f5/artifacts
+creation_timestamp: 1771716816165
+experiment_id: '214365529706689014'
+last_updated_timestamp: 1771716822647
+model_id: m-34f629065a5d440b8d1c7a26945ce5f5
+model_type: null
+name: model
+source_run_id: cd61f106ca5148169639980a320b266f
+status: 2
+status_message: null

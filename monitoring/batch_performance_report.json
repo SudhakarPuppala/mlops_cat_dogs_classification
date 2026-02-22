@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-02-22T09:13:07.010742Z",
+  "batch_size": 100,
+  "accuracy": 0.76,
+  "precision": 0.7857,
+  "recall": 0.7857,
+  "f1_score": 0.7857,
+  "mean_confidence": 0.7715,
+  "drift_alert": false,
+  "accuracy_threshold": 0.7,
+  "request_metrics": {
+    "total": 53,
+    "errors": 3,
+    "error_pct": 5.66,
+    "latency": {
+      "mean": 39.952,
+      "median": 37.631,
+      "p95": 79.937,
+      "p99": 82.16,
+      "min": 0.025,
+      "max": 82.16
+    }
+  }
+}

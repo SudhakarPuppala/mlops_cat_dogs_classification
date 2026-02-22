@@ -33,3 +33,17 @@ plots:
         - val_recall
         - val_f1_score
       title: "Training Metrics"
+  - val_f1_score vs val_recall:
+      template: confusion
+      x: val_f1_score
+      y:
+        metrics/metrics.json: val_recall
+  - num_epochs vs val_precision:
+      template: confusion
+      x: num_epochs
+      y:
+        metrics/metrics.json:
+          - val_precision
+          - val_recall
+
+
